@@ -1,4 +1,4 @@
-# This is a sample Python script.
+#!/usr/bin/env python
 
 # this file is a test case of the spacy module described at https://spacy.io/
 # for spacy to function correctly, one must load the en_core_web_sm into the .venv
@@ -11,6 +11,11 @@
 import spacy
 
 def parse_text(name: str):
+    """
+        parse the test using spacy and "en_core_web_sm
+           :param name: the name of the logger
+           :return: None
+           """
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
