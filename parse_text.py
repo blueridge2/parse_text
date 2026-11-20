@@ -10,6 +10,7 @@
 
 import spacy
 import argparse
+import sys
 
 
 def read_file(path:str)->str:
@@ -68,6 +69,7 @@ def parse_text(language_model: str, text:str):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
 
+    sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser()
     parser.add_argument("file_name", help="parse a file for Proper Names using spacy",
                         type=str)
