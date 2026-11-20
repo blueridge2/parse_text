@@ -49,6 +49,6 @@ def parse_text(language_model: str):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    language_model = "en_core_web_sm"
-    parse_text(language_model)
+    spacy_language_model = "en_core_web_sm"
+    parse_text(spacy_language_model)
 
