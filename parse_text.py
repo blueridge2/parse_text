@@ -3,7 +3,7 @@
 # This file is a test case of the spacy module described at https://spacy.io/
 # for spacy to function correctly, one must load the en_core_web_sm into the .venv
 # using the command  python -m spacy download en_core_web_sm
-# to do this I opened a the using the terminal button on the side of the pycharm ide
+# to do this I opened a terminal using the terminal button on the side of the pycharm ide
 # and cd to .venv directory
 # then I ran the command  python -m spacy download en_core_web_sm
 
