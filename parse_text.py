@@ -10,6 +10,16 @@
 
 import spacy
 
+def read_file(file_path:str)->str:
+    """
+    Read a text file.
+    :param file_path:
+    :return: file text
+    """
+    with open(file_path, "r", encoding="utf-8") as file:
+        file_text = file.read()
+    return file_text
+
 def parse_text(language_model: str):
     """
         parse the test using spacy and "en_core_web_sm
@@ -35,16 +45,20 @@ def parse_text(language_model: str):
             "seriously. “I can tell you very senior CEOs of major American "
             "car companies would shake my hand and turn away because I wasn’t "
             "worth talking to,” said Thrun, in an interview with Recode earlier "
-            "this week.")
+            "this week. My name is Roger Rabbit and want to go to the city of Metropolis")
     doc = nlp(text)
 
     # Analyze syntax
-    print("Noun phrases:", [chunk.text for chunk in doc.noun_chunks])
-    print("Verbs:", [token.lemma_ for token in doc if token.pos_ == "VERB"])
+    # print("Noun phrases:", [chunk.text for chunk in doc.noun_chunks])
+    print("Propper Names:", [token.lemma_ for token in doc if token.pos_ == "PROPN"])
+    names = [ent.text.strip() for ent in doc.ents if ent.label_ == "PERSON"]
+    print("The names in the doc are")
+    for  name in names:
+        print(name)
 
     # Find named entities, phrases and concepts
-    for entity in doc.ents:
-        print(entity.text, entity.label_)
+    #for entity in doc.ents:
+    #    print(entity.text, entity.label_)
 
 
 # Press the green button in the gutter to run the script.
