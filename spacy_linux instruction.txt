@@ -1,0 +1,26 @@
+
+Method 1: Shared Virtual Environment in /opt (Recommended)
+
+1. Ensure Python's venv module is installed. On Debian/Ubuntu-based systems, run:bash
+sudo apt update && sudo apt install -y python3-venv
+Use code with caution.
+2. Create a shared virtual environment. Put it in /opt/spacy so all users can read and execute it:bash
+sudo python3 -m venv /opt/spacy
+Use code with caution.
+3. Install spaCy and a language model into that environment. Using the full path to the environment's pip and python executables installs everything directly into /opt/spacy:bash
+sudo /opt/spacy/bin/pip install -U pip setuptools wheel
+sudo /opt/spacy/bin/pip install -U spacy
+sudo /opt/spacy/bin/python -m spacy download en_core_web_sm
+Use code with caution.
+4. Set read and execute permissions for all users. By default, /opt is world-readable, so running the commands with sudo will grant 755 permissions. To be certain every user can access it, run:bash
+sudo chmod -R a+rX /opt/spacy
+
+How Users Access It
+
+Any user on the system can now use spaCy in two ways without needing sudo:
+• Run scripts directly using the shared interpreter:bash
+/opt/spacy/bin/python my_script.py
+Use code with caution.
+• Activate the environment in their terminal session:bash
+source /opt/spacy/bin/activate
+python my_script.py
