@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-
-# this file is a test case of the spacy module described at https://spacy.io/
+#
+# This file is a test case of the spacy module described at https://spacy.io/
 # for spacy to function correctly, one must load the en_core_web_sm into the .venv
 # using the command  python -m spacy download en_core_web_sm
 # to do this I opened a the using the terminal button on the side of the pycharm ide
@@ -9,6 +9,8 @@
 
 
 import spacy
+
+spacy_language_model ="en_core_web_sm_xxx"
 
 def parse_text(name: str):
     """
@@ -20,7 +22,14 @@ def parse_text(name: str):
     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
     # Load English tokenizer, tagger, parser and NER
-    nlp = spacy.load("en_core_web_sm")
+    try:
+        nlp = spacy.load("en_core_web_sm_xxx")
+    except OSError as error:
+        print(f"{type(error).__name__}: {error}")
+        print(f"Could not load the spacy language model{spacy_language_model}")
+        print(f"Use the command python -m spacy download {spacy_language_model}")
+        print(f"to load the model from spacy.io")
+        exit(1)
 
     # Process whole documents
     text = ("When Sebastian Thrun started working on self-driving cars at "
