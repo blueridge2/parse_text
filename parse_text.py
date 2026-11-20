@@ -10,28 +10,24 @@
 
 import spacy
 
-spacy_language_model ="en_core_web_sm"
-
-def parse_text(name: str):
+def parse_text(language_model: str):
     """
         parse the test using spacy and "en_core_web_sm
-           :param name: the name of the logger
+           :param language_model: the name of the logger
            :return: None
            """
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
     # Load English tokenizer, tagger, parser and NER
     try:
-        nlp = spacy.load(spacy_language_model)
+        nlp = spacy.load(language_model)
     except OSError as error:
         print(f"{type(error).__name__}: {error}")
-        print(f"Could not load the spacy language model{spacy_language_model}")
-        print(f"Use the command python -m spacy download {spacy_language_model}")
+        print(f"Could not load the spacy language model{language_model}")
+        print(f"Use the command python -m spacy download {language_model}")
         print(f"to load the model from spacy.io")
         exit(1)
     else:
-        print(f"Loaded the spacy language model{spacy_language_model}")
+        print(f"Loaded the spacy language model{language_model}")
 
     # Process whole documents
     text = ("When Sebastian Thrun started working on self-driving cars at "
@@ -53,5 +49,6 @@ def parse_text(name: str):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    parse_text('call spacy text')
+    language_model = "en_core_web_sm"
+    parse_text(language_model)
 
