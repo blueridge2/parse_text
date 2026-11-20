@@ -4,7 +4,7 @@
 # for spacy to function correctly, one must load the en_core_web_sm into the .venv
 # using the command  python -m spacy download en_core_web_sm
 # to do this I opened a the using the terminal button on the side of the pycharm ide
-# ad cd to .venv directory
+# and cd to .venv directory
 # then I ran the command  python -m spacy download en_core_web_sm
 
 
