@@ -54,7 +54,7 @@ def parse_text(language_model: str, text:str):
 
     # Analyze syntax
     # print("Noun phrases:", [chunk.text for chunk in doc.noun_chunks])
-    print("Propper Names:", [token.lemma_ for token in doc if token.pos_ == "PROPN"])
+    # print("Propper Names:", [token.lemma_ for token in doc if token.pos_ == "PROPN"])
     names = [ent.text.strip() for ent in doc.ents if ent.label_ == "PERSON"]
     print("The names in the doc are")
     for  name in names:
