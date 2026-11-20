@@ -9,6 +9,7 @@
 
 
 import spacy
+import argparse
 
 def read_file(file_path:str)->str:
     """
@@ -20,10 +21,11 @@ def read_file(file_path:str)->str:
         file_text = file.read()
     return file_text
 
-def parse_text(language_model: str):
+def parse_text(language_model: str, text:str):
     """
         parse the test using spacy and "en_core_web_sm
            :param language_model: the name of the logger
+           :text the text to be parsed
            :return: None
            """
 
@@ -40,12 +42,13 @@ def parse_text(language_model: str):
         print(f"Loaded the spacy language model{language_model}")
 
     # Process whole documents
-    text = ("When Sebastian Thrun started working on self-driving cars at "
-            "Google in 2007, few people outside of the company took him "
-            "seriously. “I can tell you very senior CEOs of major American "
-            "car companies would shake my hand and turn away because I wasn’t "
-            "worth talking to,” said Thrun, in an interview with Recode earlier "
-            "this week. My name is Roger Rabbit and want to go to the city of Metropolis")
+    #text = ("When Sebastian Thrun started working on self-driving cars at "
+    #        "Google in 2007, few people outside of the company took him "
+    #        "seriously. “I can tell you very senior CEOs of major American "
+    #        "car companies would shake my hand and turn away because I wasn’t "
+    #        "worth talking to,” said Thrun, in an interview with Recode earlier "
+    #        "this week. My name is Roger Rabbit and want to go to the city of Metropolis")
+
     doc = nlp(text)
 
     # Analyze syntax
@@ -63,6 +66,16 @@ def parse_text(language_model: str):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("file_name", help="parse a file for Proper Names using spacy",
+                        type=str)
+    args = parser.parse_args()
+    # get the file path
+    file_path = args.file_name
+    # get the text
+    text = read_file(file_path)
     spacy_language_model = "en_core_web_sm"
-    parse_text(spacy_language_model)
+    # now pass to the language parser
+    parse_text(spacy_language_model, text)
 
