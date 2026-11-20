@@ -19,8 +19,13 @@ def read_file(path:str)->str:
     :param path: path to the file to be read
     :return: file text
     """
-    with open(path, "r", encoding="utf-8") as file:
-        file_text = file.read()
+    file_text = None
+    try:
+        with open(path, "r", encoding="utf-8") as file:
+            file_text = file.read()
+    except OSError as error:
+        print(f"{type(error).__name__}: {error}")
+        exit(1)
     return file_text
 
 def parse_text(language_model: str, text:str):
@@ -68,10 +73,10 @@ def parse_text(language_model: str, text:str):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-
+    # this is needed because some documents have on utf 8 encodings in proper names
     sys.stdout.reconfigure(encoding="utf-8")
-    parser = argparse.ArgumentParser()
-    parser.add_argument("file_name", help="parse a file for Proper Names using spacy",
+    parser = argparse.ArgumentParser(exit_on_error=True)
+    parser.add_argument("file_name", help="Parse a file for Proper Names using spacy. Usage parse_text.py filename",
                         type=str)
     args = parser.parse_args()
     # get the file path
