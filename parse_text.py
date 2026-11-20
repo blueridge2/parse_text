@@ -10,7 +10,7 @@
 
 import spacy
 
-spacy_language_model ="en_core_web_sm_xxx"
+spacy_language_model ="en_core_web_sm"
 
 def parse_text(name: str):
     """
@@ -23,13 +23,15 @@ def parse_text(name: str):
 
     # Load English tokenizer, tagger, parser and NER
     try:
-        nlp = spacy.load("en_core_web_sm_xxx")
+        nlp = spacy.load(spacy_language_model)
     except OSError as error:
         print(f"{type(error).__name__}: {error}")
         print(f"Could not load the spacy language model{spacy_language_model}")
         print(f"Use the command python -m spacy download {spacy_language_model}")
         print(f"to load the model from spacy.io")
         exit(1)
+    else:
+        print(f"Loaded the spacy language model{spacy_language_model}")
 
     # Process whole documents
     text = ("When Sebastian Thrun started working on self-driving cars at "
