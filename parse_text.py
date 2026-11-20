@@ -11,13 +11,14 @@
 import spacy
 import argparse
 
-def read_file(file_path:str)->str:
+
+def read_file(path:str)->str:
     """
     Read a text file.
-    :param file_path:
+    :param path: path to the file to be read
     :return: file text
     """
-    with open(file_path, "r", encoding="utf-8") as file:
+    with open(path, "r", encoding="utf-8") as file:
         file_text = file.read()
     return file_text
 
@@ -25,7 +26,7 @@ def parse_text(language_model: str, text:str):
     """
         parse the test using spacy and "en_core_web_sm
            :param language_model: the name of the logger
-           :text the text to be parsed
+           :param text: the text to be parsed
            :return: None
            """
 
@@ -74,8 +75,8 @@ if __name__ == '__main__':
     # get the file path
     file_path = args.file_name
     # get the text
-    text = read_file(file_path)
+    doc_text = read_file(file_path)
     spacy_language_model = "en_core_web_sm"
     # now pass to the language parser
-    parse_text(spacy_language_model, text)
+    parse_text(spacy_language_model, doc_text)
 
