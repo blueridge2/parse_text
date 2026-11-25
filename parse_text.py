@@ -7,11 +7,9 @@
 # and cd to .venv directory
 # then I ran the command  python -m spacy download en_core_web_sm
 
-
 import spacy
 import argparse
 import sys
-
 
 def read_file(path:str)->str:
     """
@@ -66,6 +64,7 @@ def parse_text(language_model: str, text:str):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     # this is needed because some documents have on utf 8 encodings in proper names
+    # on windows if this is not used text output redirected to a file will fail with an error
     sys.stdout.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(exit_on_error=True)
     parser.add_argument("file_name", help="Parse a file for Proper Names using spacy. Usage parse_text.py filename",
